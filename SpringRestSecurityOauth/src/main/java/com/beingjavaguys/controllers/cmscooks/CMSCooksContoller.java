@@ -1,4 +1,4 @@
-package com.beingjavaguys.controllers.cmsmenu;
+package com.beingjavaguys.controllers.cmscooks;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.beingjavaguys.bean.cmscooks.CMSCooksBean;
 import com.beingjavaguys.bean.cmsmenu.CMSCatagoryBean;
+import com.beingjavaguys.services.cmscooks.CMSCooksService;
 import com.beingjavaguys.services.cmsmenu.CMSCatagoryService;
 
-
-
 @Controller
-@RequestMapping("/cms/menucatagory")
-public class CMSMenuCatagoryController {
+@RequestMapping("/cms/cooks")
+public class CMSCooksContoller {
 
 	@Autowired
-	CMSCatagoryService cmsCatagoryService;
+	CMSCooksService cmsCooksService;
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody
 	void addCatagory(HttpServletResponse response,
-			@RequestBody CMSCatagoryBean cmsCatagoryBean) {
+			@RequestBody CMSCooksBean cmsCooksBean) {
 		try {
-			cmsCatagoryService.addCatagory(cmsCatagoryBean,response);
+			cmsCooksService.addCooks(cmsCooksBean,response);
 		} catch (Exception e) {
 			response.setStatus(400);
 		}
@@ -38,7 +38,7 @@ public class CMSMenuCatagoryController {
 	void addCatagory(HttpServletResponse response,
 			@RequestParam(required=true) int id) {
 		try {
-			cmsCatagoryService.deleteCatagory(id,response);
+			cmsCooksService.deleteCooks(id,response);
 		} catch (Exception e) {
 			response.setStatus(400);
 		}

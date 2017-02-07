@@ -7,7 +7,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>SpringRestSecurityOauth Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<!-- @author Nagesh.Chauhan(neel4soft@gmail.com) -->
 	<properties>
 		<spring.version>4.0.7.RELEASE</spring.version>
 		<log4j.version>1.2.17</log4j.version>

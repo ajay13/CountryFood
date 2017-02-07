@@ -1,4 +1,4 @@
-package com.beingjavaguys.dao.cmsmenu.impl;
+package com.beingjavaguys.dao.cmscooks.impl;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,34 +8,34 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.beingjavaguys.dao.cmsmenu.CMSMenuCatagoryDao;
+import com.beingjavaguys.dao.cmscooks.CMSCooksDao;
 import com.beingjavaguys.dao.core.CoreDao;
-import com.beingjavaguys.models.UserData;
-import com.beingjavaguys.models.cmsmenu.CMSMenuCatagoryData;
+import com.beingjavaguys.models.cmscooks.CMSCooksData;
 
-@Repository("cmsMenuCatagoryDao")
-public class CMSMenuCatagoryDaoImpl implements CMSMenuCatagoryDao {
+@Repository("cmsCooksDao")
+public class CMSCooksDaoImpl implements CMSCooksDao{
+
 
 	@Autowired
 	CoreDao coreDao;
-
+	
 	@Override
-	public void addCatagory(CMSMenuCatagoryData cmsMenuCatagoryData,HttpServletResponse response) {
+	public void addCooks(CMSCooksData cmsCooksData, HttpServletResponse response) {
 
-		String getCatagory = "select count(C) from CMSMenuCatagoryData C where C.name=:name";
+		String getCooks = "select count(C) from CMSCooksData C where C.name=:name";
 		
 		Session session = null;
 		Query query = null;
 		try {
 			session = coreDao.getSession();
 			session.beginTransaction();
-			query = session.createQuery(getCatagory);
-			query.setParameter("name", cmsMenuCatagoryData.getName());
+			query = session.createQuery(getCooks);
+			query.setParameter("name", cmsCooksData.getName());
 			
 			Long count = (Long) query.uniqueResult();
 			
 			if(count==0){
-				session.saveOrUpdate(cmsMenuCatagoryData);
+				session.saveOrUpdate(cmsCooksData);
 				session.getTransaction().commit();
 				response.setStatus(200);//for OK
 			}else{
@@ -49,15 +49,14 @@ public class CMSMenuCatagoryDaoImpl implements CMSMenuCatagoryDao {
 		}
 	}
 
-
 	@Override
-	public void deleteCatagory(CMSMenuCatagoryData cmsMenuCatagoryData, HttpServletResponse response) {
+	public void deleteCooks(CMSCooksData cmsCooksData, HttpServletResponse response) {
 
 		Session session = null;
 		try {
 			session = coreDao.getSession();
 			session.beginTransaction();
-			session.delete(cmsMenuCatagoryData);
+			session.delete(cmsCooksData);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -67,19 +66,19 @@ public class CMSMenuCatagoryDaoImpl implements CMSMenuCatagoryDao {
 		}
 		
 	}
-	
+
 	@Override
-	public CMSMenuCatagoryData getCatagory(int id,HttpServletResponse response) {
-		CMSMenuCatagoryData cmsMenuCatagoryData = null;
+	public CMSCooksData getCooks(int id, HttpServletResponse response) {
+		CMSCooksData cmsCooksData = null;
 		Session session = null;
-		String getCMSMenuCatagory = "from CMSMenuCatagoryData C where C.id=:id";
+		String getCooks = "from CMSCooksData C where C.id=:id";
 		Query query = null;
 		try {
 			session = coreDao.getSession();
 			session.beginTransaction();
-			query = session.createQuery(getCMSMenuCatagory);
+			query = session.createQuery(getCooks);
 			query.setParameter("id", id);
-			cmsMenuCatagoryData = (CMSMenuCatagoryData) query.uniqueResult();
+			cmsCooksData = (CMSCooksData) query.uniqueResult();
 		}
 		catch (HibernateException e) {
 			e.printStackTrace();
@@ -87,7 +86,7 @@ public class CMSMenuCatagoryDaoImpl implements CMSMenuCatagoryDao {
 		finally {
 			session.close();
 		}
-		return cmsMenuCatagoryData;
+		return cmsCooksData;
 	}
 
 }

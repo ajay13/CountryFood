@@ -12,6 +12,8 @@ public class CMSMenuBean {
 
 	private int menuCatagoryId;
 
+	private String menuImagePath;
+
 	public String getItemName() {
 		return itemName;
 	}
@@ -50,6 +52,14 @@ public class CMSMenuBean {
 
 	public void setMenuCatagoryId(int menuCatagoryId) {
 		this.menuCatagoryId = menuCatagoryId;
+	}
+
+	public String getMenuImagePath() {
+		return menuImagePath;
+	}
+
+	public void setMenuImagePath(String menuImagePath) {
+		this.menuImagePath = menuImagePath;
 	}
 
 }

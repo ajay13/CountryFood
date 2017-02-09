@@ -13,6 +13,17 @@ public class CMSMenuUtility {
 		cmsMenuData.setItemName(cmsMenuBean.getItemName());
 		cmsMenuData.setDescription(cmsMenuBean.getDescription());
 		cmsMenuData.setPrice(cmsMenuBean.getPrice());
+		
 		return cmsMenuData;
+	}
+	
+	public CMSMenuBean populateCMSMenuBean(CMSMenuData cmsMenuData) {
+		CMSMenuBean cmsMenuBean = new CMSMenuBean();
+
+		cmsMenuBean.setItemName(cmsMenuData.getItemName());
+		cmsMenuBean.setDescription(cmsMenuData.getDescription());
+		cmsMenuBean.setPrice(cmsMenuData.getPrice());
+		cmsMenuBean.setMenuImagePath(cmsMenuData.getMenuImagePath());
+		return cmsMenuBean;
 	}
 }

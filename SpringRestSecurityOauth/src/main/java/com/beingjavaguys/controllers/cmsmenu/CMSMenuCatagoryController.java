@@ -42,7 +42,5 @@ public class CMSMenuCatagoryController {
 		} catch (Exception e) {
 			response.setStatus(400);
 		}
-	}
-	
-	
+	}	
 }

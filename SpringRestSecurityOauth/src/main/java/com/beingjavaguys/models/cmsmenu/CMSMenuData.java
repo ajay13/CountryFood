@@ -29,8 +29,8 @@ public class CMSMenuData {
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "image_path")
-	private String imagePath;
+	@Column(name = "menu_image_path")
+	private String menuImagePath;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cook_id", nullable = false)
@@ -72,14 +72,6 @@ public class CMSMenuData {
 		this.description = description;
 	}
 
-	public String getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-
 	public CMSCooksData getCmsCooksData() {
 		return cmsCooksData;
 	}
@@ -94,6 +86,14 @@ public class CMSMenuData {
 
 	public void setCmsMenuCatagoryData(CMSMenuCatagoryData cmsMenuCatagoryData) {
 		this.cmsMenuCatagoryData = cmsMenuCatagoryData;
+	}
+
+	public String getMenuImagePath() {
+		return menuImagePath;
+	}
+
+	public void setMenuImagePath(String menuImagePath) {
+		this.menuImagePath = menuImagePath;
 	}
 
 }
